@@ -21,17 +21,29 @@ soup = BeautifulSoup(html, 'html.parser')
 
 #need to convert the object to string
 txt = soup.prettify() 
-
 for word in txt:
 	find_string = soup.body.findAll(text=re.compile('student')
-print str.replace('student', 'AMAZING student')
+print(str.replace('student', 'AMAZING student'))
+
 
 #for student in soup.find_all(class_='body-inside2'): 
 
 
 #swap w pic after   .html is the webpage (chapter 7)
-webpage = open('file.html', 'w')
-webpage.writetxt 
+
 
 
 #theres a lot of ways to replace findall or regex
+
+link = soup.find_all ('img')
+for b in link:
+href = b["src"]
+if (href) == 'https://testbed.files.wordpress.com/2012/09/bsi_exposition_041316_192.jpg':
+print (href)
+b["src"] = 'me.png'
+print (b["src"])
+
+#can you do the same thing for students?
+
+webpage = open('file.html', 'w')
+webpage.writetxt 

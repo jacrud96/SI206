@@ -11,17 +11,19 @@ print("""No output necessary although you
 
 import tweepy 
 
-consumer_key = "I1NE9EwNVekvFYkeiiwaoT3iZ"
-consumer_secret = "injoKb5LWmAekKH9ALdscuG9B00Gs456kKi3Ykt2uwD3OD5QVM"
-access_token = "250423934-mYtCr5i8RHFAN6bXl3sM9QxzgvNeqyazq19BlTbq"
-access_secret = "J7rhELXeHkPQ6xDfMtqtxqrctiCmzCO8ZimcZrHnQ7ZDU"
+consumer_key = 'no1y4zMxXrpmKNaSeBWWP1BFy'
+consumer_secret = 'R8smVQlWwUFEPZzNWtPlznTskYKXjYP4dvO4aV7whYTpRbSqXo'
+access_token = '341297169-tprPKGkydTIn7cA2vKu91ik7PO7Cd15HA9keQ9mR'
+access_secret = 'S4gOGuWqypNQhGkCQgPBLeNbbCyYYocu1KiDRQTX8JpfC'
+
+
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
 
-img = 'smile.png' 
+img = 'mouse.png' 
 txt = '#UMSI-206 #Proj3'
 
 
