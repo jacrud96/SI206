@@ -14,19 +14,20 @@
 import requests 
 from bs4 import BeautifulSoup 
 import re
-import urllib.request, urllib.parse, urllib.error
-base_url = 'https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions'
-html = urllib.request.urlopen(base_url).read() 
-soup = BeautifulSoup(html, 'html.parser') 
-
-#need to convert the object to string
-txt = soup.prettify() 
-for word in txt:
-	find_string = soup.body.findAll(text=re.compile('student')
-print(str.replace('student', 'AMAZING student'))
 
 
-#for student in soup.find_all(class_='body-inside2'): 
+base_url = 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
+r = requests.get(base_url)
+soup = BeautifulSoup(r.text, 'html.parser')
+
+word = soup.find_all('p')
+for elt in word:
+	element = elt.text
+	paragraph = re.findall('\\bstudent\\b', element)
+	print (paragraph)
+	element = re.sub('\\bstudent\\b', 'AMAZING student', element)
+	print (element)
+
 
 
 #swap w pic after   .html is the webpage (chapter 7)
@@ -35,15 +36,25 @@ print(str.replace('student', 'AMAZING student'))
 
 #theres a lot of ways to replace findall or regex
 
-link = soup.find_all ('img')
+link = soup.find_all('img')
 for b in link:
-href = b["src"]
-if (href) == 'https://testbed.files.wordpress.com/2012/09/bsi_exposition_041316_192.jpg':
-print (href)
-b["src"] = 'me.png'
-print (b["src"])
+	href = b["src"]
+	if href == 'https://testbed.files.wordpress.com/2012/09/bsi_exposition_041316_192.jpg':
+		b['src'] = 'https://s-media-cache-ak0.pinimg.com/avatars/jaclynrudolf_1330556638_140.jpg'
+		
+
+for b in link:
+	href = b['src']
+	if not href.startswith("https:"):
+		print ('pre', b['src'])
+		b['src'] = 'https://raw.githubusercontent.com/cvanlent/SI206/master/HW3-StudentCopy/media/logo.png'
+		print (b['src'])
+
+ending = str(soup)
+
+f= open('project.html', 'w')
+f.write(ending)
+f.close()
 
 #can you do the same thing for students?
 
-webpage = open('file.html', 'w')
-webpage.writetxt 
