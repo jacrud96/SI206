@@ -14,15 +14,12 @@
 
 # You will demo this live for grading.
 
-print("""No output necessary although you 
-	can print out a success/failure message if you want to.""")
-
 
 import tweepy
-import tweepy import OAuthHandler
+#import tweepy import OAuthHandler
 from tweepy import API
 from tweepy import Cursor
-from textblob import textblob
+from textblob import TextBlob
 
 consumer_key = 'no1y4zMxXrpmKNaSeBWWP1BFy'
 consumer_secret = 'R8smVQlWwUFEPZzNWtPlznTskYKXjYP4dvO4aV7whYTpRbSqXo'
@@ -35,20 +32,28 @@ auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
 
+pol_count = 0
+pol_total = 0
+
+sub_count = 0
+sub_total = 0
+
 search_term = input('Input a term: ')
 for tweets in tweepy.Cursor(api.search, q=search_term, result_type='recent', include_entities=True, lang='en', count=100).items(100): 
 	print (tweets.text)
-
-analysis = TextBlob(tweets.text)
-print (analysis.sentiment)
-sub = analysis.sentiment.subjectivity
-pol = analysis.sentiment.polarity
-
-print ('The average subjectivity is:', sub)
-print ('The average polarity is', pol)
+	analysis = TextBlob(tweets.text)
 
 
+	pol_count = pol_count + 1
+	pol_total = pol_total + analysis.polarity
+
+	sub_count = sub_count + 1
+	sub_total = sub_total + analysis.subjectivity
+
+avg_pol = pol_total/pol_count
+avg_sub = sub_total/sub_count
+
+print ('The average subjectivity is:' + str(avg_sub))
+print ('The average polarity is' + str(avg_pol))
 
 
-print("Average subjectivity is")
-print("Average polarity is")

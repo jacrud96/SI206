@@ -17,16 +17,16 @@ import re
 
 
 base_url = 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
-r = requests.get(base_url)
-soup = BeautifulSoup(r.text, 'html.parser')
+req = requests.get(base_url)
+soup = BeautifulSoup(req.text, 'html.parser')
 
-word = soup.find_all('p')
-for elt in word:
-	element = elt.text
-	paragraph = re.findall('\\bstudent\\b', element)
-	print (paragraph)
-	element = re.sub('\\bstudent\\b', 'AMAZING student', element)
-	print (element)
+wd = soup.find_all('p')
+for each in wd:
+	elt = each.text
+	total = re.findall('\\bstudent\\b', elt)
+	print (total)
+	elt = re.sub('\\bstudent\\b', 'AMAZING student', elt)
+	print (elt)
 
 
 
