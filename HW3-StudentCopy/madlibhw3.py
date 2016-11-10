@@ -28,9 +28,9 @@ if debug:
 	print ("Getting information from file austen-sense.txt...\n")
 
 
-text2 = "austen-sense.txt" # need a file with this name in directory
-f = open(text2,'r')
-para = f.read()
+text_2 = "austen-sense.txt" # need a file with this name in directory
+file1 = open(text_2,'r')
+para = file1.read()
 
 tokens = nltk.word_tokenize(para)
 
@@ -46,11 +46,11 @@ def spaced(word):
 	else:
 		return " " + word
 
-sent = ''
+full = ''
 for word in para.split()[:150]:
-	x = spaced(word)
-	sent = sent + x
-print (sent)
+	sp = spaced(word)
+	full = full + sp
+print (full)
 
 final_words = []
 count = 0 
@@ -67,9 +67,9 @@ for (word, tag) in tagged_tokens:
 		else:
 			continue 
 
-sent2 = ''
+full2 = ''
 final_text = ''.join(final_words)
 for words in final_text.split()[:150]:
 	word = spaced(words)
-	sent2 = sent2 + word 
-print (sent2)
+	full2 = full2 + word 
+print (full2)

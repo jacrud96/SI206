@@ -23,7 +23,7 @@ auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
 
-img = 'mouse.png' 
+imag = 'mouse.png' 
 txt = '#UMSI-206 #Proj3'
 
 
